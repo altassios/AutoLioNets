@@ -31,10 +31,9 @@ class AutoLioNet:
         scores = []
         classic_ml_score = mean_absolute_error(x_train, classic_ml.predict(encoded_x_train))
         scores.append(classic_ml_score)
-        simple_nn_scores = simple_nn.evaluate(encoded_x_train, x_train)
-        simple_nn_score = simple_nn_scores[0]
+        simple_nn_score = simple_nn.evaluate(encoded_x_train, x_train)
         scores.append(simple_nn_score)
-        autokeras_scores = autokeras.evaluate(encoded_x_train, x_train)[0]
+        autokeras_scores = autokeras.evaluate(encoded_x_train, x_train)
         autokeras_score = autokeras_scores[0]
         scores.append(autokeras_score)
         autopytorch_score = mean_absolute_error(x_train, autopytorch.predict(encoded_x_train))
