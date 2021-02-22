@@ -13,7 +13,7 @@ from AutoLioNets import AutoLioNet
 
 class LioNet:
     """Class for interpreting a neural network locally"""
-    def __init__(self, predictor, encoder, train_data, decoder=None, time=None, target_scaler=None, feature_names=None, decoder_lower_threshold=0, double_detector=False):
+    def __init__(self, predictor, encoder, train_data, decoder="auto", time=None, target_scaler=None, feature_names=None, decoder_lower_threshold=0, double_detector=False):
         """Init function
         Args:
             model: The trained predictor model
@@ -37,7 +37,7 @@ class LioNet:
         self.time = time
         if decoder == "auto":
             autolionet = AutoLioNet(self.encoded_training_data, self.train_data, self.time)
-            self.decoder = autolionet.best_strategy(self.encoded_training_data, self.train_data, self.time)
+            self.decoder = autolionet.load_decoder()
         else:
             self.decoder = decoder
         self._extract_feature_statistics()
