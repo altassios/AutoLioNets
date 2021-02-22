@@ -35,7 +35,7 @@ class AutoLioNet:
             print("Best model: keras model, saved:",self.name)
             decoder = tf.keras.models.load_model(self.name)
             return decoder
-        elif self.method == 2:
+        elif self.method == 3:
             print("Best model: torch model")
             return self.autopytorch_decoder
 
